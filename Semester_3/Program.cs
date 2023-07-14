@@ -14,11 +14,14 @@ builder.Services.AddScoped<IServiceCRUD<Blog>,BlogCRUD>();
 builder.Services.AddScoped<IServiceCRUD<AdministrativeUnit>, AdministrativeUnitCRUD>();
 builder.Services.AddScoped<IServiceCRUD<BlogReview>, BlogReviewCRUD>();
 builder.Services.AddScoped<IServiceCRUD<CartDetail>, CartDetailCRUD>();
-
+builder.Services.AddScoped<IServiceCRUD<Role>, RoleCRUD>();
 builder.Services.AddScoped<IServiceCRUD<Category>, CategoryCRUD>();
 builder.Services.AddScoped<IServiceCRUD<Cart>, CartCRUD>();
 builder.Services.AddScoped<IServiceCRUD<Account>, AccountCRUD>();
+builder.Services.AddScoped<IServiceCRUD<Order>, OrderCRUD>();
+builder.Services.AddScoped<IServiceCRUD<Manufacturer>, ManufacturerCRUD>();
 builder.Services.AddScoped<IServiceCRUD<Address>, AddressCRUD>();
+builder.Services.AddScoped<IServiceCRUD<Ward>, WardCRUD>();
 builder.Services.AddScoped<IServiceCRUD<AccountCoupon>, AccountCouponCRUD>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -28,7 +31,7 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
+    app.UseSwagger();   
     app.UseSwaggerUI();
 }
 
