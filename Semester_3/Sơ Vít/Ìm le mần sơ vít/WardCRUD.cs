@@ -33,7 +33,7 @@ namespace Semester_3.Sơ_Vít.Ìm_le_mần_sơ_vít
         {
             try
             {
-                var wardEntity = _databaseContext.Wards.FirstOrDefault(w => w.Code == id);
+                var wardEntity = _databaseContext.Wards.FirstOrDefault(w => w.Code == id.ToString());
                 if (wardEntity != null)
                 {
                     _databaseContext.Wards.Remove(wardEntity);
@@ -47,7 +47,7 @@ namespace Semester_3.Sơ_Vít.Ìm_le_mần_sơ_vít
             }
         }
 
-        public dynamic Get(int id) => _databaseContext.Wards.FirstOrDefault(w => w.Code == id);
+        public dynamic Get(int id) => _databaseContext.Wards.FirstOrDefault(w => w.Code == id.ToString());
 
         public dynamic Read() => _databaseContext.Wards.ToList();
 
