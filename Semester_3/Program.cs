@@ -11,9 +11,15 @@ builder.Services.AddControllers();
 
 builder.Services.AddScoped<DatabaseContext>();
 builder.Services.AddScoped<IServiceCRUD<Blog>,BlogCRUD>();
+builder.Services.AddScoped<IServiceCRUD<AdministrativeUnit>, AdministrativeUnitCRUD>();
+builder.Services.AddScoped<IServiceCRUD<BlogReview>, BlogReviewCRUD>();
+builder.Services.AddScoped<IServiceCRUD<CartDetail>, CartDetailCRUD>();
 
+builder.Services.AddScoped<IServiceCRUD<Category>, CategoryCRUD>();
+builder.Services.AddScoped<IServiceCRUD<Cart>, CartCRUD>();
 builder.Services.AddScoped<IServiceCRUD<Account>, AccountCRUD>();
-
+builder.Services.AddScoped<IServiceCRUD<Address>, AddressCRUD>();
+builder.Services.AddScoped<IServiceCRUD<AccountCoupon>, AccountCouponCRUD>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 

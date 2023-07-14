@@ -31,7 +31,7 @@ public partial class DatabaseContext : DbContext
 
     public virtual DbSet<CartDetail> CartDetails { get; set; }
 
-    public virtual DbSet<Category> Categories { get; set; }
+    public virtual DbSet<CategoryCRUD> Categories { get; set; }
 
     public virtual DbSet<Coupon> Coupons { get; set; }
 
@@ -336,7 +336,7 @@ public partial class DatabaseContext : DbContext
                 .HasConstraintName("FK__CartDetai__produ__0D7A0286");
         });
 
-        modelBuilder.Entity<Category>(entity =>
+        modelBuilder.Entity<CategoryCRUD>(entity =>
         {
             entity.HasKey(e => e.CategoryId).HasName("PK__Category__D54EE9B422520FBD");
 
