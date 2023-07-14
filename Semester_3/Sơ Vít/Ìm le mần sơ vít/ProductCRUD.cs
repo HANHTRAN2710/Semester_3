@@ -7,20 +7,20 @@ using System.Linq;
 
 namespace Semester_3.Sơ_Vít.Ìm_le_mần_sơ_vít
 {
-    public class ProvinceCRUD : IServiceCRUD<Province>
+    public class ProductCRUD : IServiceCRUD<Product>
     {
         private readonly DatabaseContext _databaseContext;
 
-        public ProvinceCRUD(DatabaseContext databaseContext)
+        public ProductCRUD(DatabaseContext databaseContext)
         {
             _databaseContext = databaseContext;
         }
 
-        public bool Create(Province entity)
+        public bool Create(Product entity)
         {
             try
             {
-                _databaseContext.Provinces.Add(entity);
+                _databaseContext.Products.Add(entity);
                 return _databaseContext.SaveChanges() > 0;
             }
             catch (Exception)
@@ -33,10 +33,10 @@ namespace Semester_3.Sơ_Vít.Ìm_le_mần_sơ_vít
         {
             try
             {
-                var provinceEntity = _databaseContext.Provinces.FirstOrDefault(p => p.Code == id);
-                if (provinceEntity != null)
+                var productEntity = _databaseContext.Products.FirstOrDefault(p => p.ProductId == id);
+                if (productEntity != null)
                 {
-                    _databaseContext.Provinces.Remove(provinceEntity);
+                    _databaseContext.Products.Remove(productEntity);
                     return _databaseContext.SaveChanges() > 0;
                 }
                 return false;
@@ -47,15 +47,15 @@ namespace Semester_3.Sơ_Vít.Ìm_le_mần_sơ_vít
             }
         }
 
-        public dynamic Get(int id) => _databaseContext.Provinces.FirstOrDefault(p => p.Code == id);
+        public dynamic Get(int id) => _databaseContext.Products.FirstOrDefault(p => p.ProductId == id);
 
-        public dynamic Read() => _databaseContext.Provinces.ToList();
+        public dynamic Read() => _databaseContext.Products.ToList();
 
-        public bool Update(Province entity)
+        public bool Update(Product entity)
         {
             try
             {
-                _databaseContext.Provinces.Update(entity);
+                _databaseContext.Products.Update(entity);
                 return _databaseContext.SaveChanges() > 0;
             }
             catch (Exception)

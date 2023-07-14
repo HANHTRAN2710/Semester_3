@@ -7,20 +7,20 @@ using System.Linq;
 
 namespace Semester_3.Sơ_Vít.Ìm_le_mần_sơ_vít
 {
-    public class ProvinceCRUD : IServiceCRUD<Province>
+    public class PaymentMethodCRUD : IServiceCRUD<PaymentMethod>
     {
         private readonly DatabaseContext _databaseContext;
 
-        public ProvinceCRUD(DatabaseContext databaseContext)
+        public PaymentMethodCRUD(DatabaseContext databaseContext)
         {
             _databaseContext = databaseContext;
         }
 
-        public bool Create(Province entity)
+        public bool Create(PaymentMethod entity)
         {
             try
             {
-                _databaseContext.Provinces.Add(entity);
+                _databaseContext.PaymentMethods.Add(entity);
                 return _databaseContext.SaveChanges() > 0;
             }
             catch (Exception)
@@ -33,10 +33,10 @@ namespace Semester_3.Sơ_Vít.Ìm_le_mần_sơ_vít
         {
             try
             {
-                var provinceEntity = _databaseContext.Provinces.FirstOrDefault(p => p.Code == id);
-                if (provinceEntity != null)
+                var paymentMethodEntity = _databaseContext.PaymentMethods.FirstOrDefault(pm => pm.PaymentId == id);
+                if (paymentMethodEntity != null)
                 {
-                    _databaseContext.Provinces.Remove(provinceEntity);
+                    _databaseContext.PaymentMethods.Remove(paymentMethodEntity);
                     return _databaseContext.SaveChanges() > 0;
                 }
                 return false;
@@ -47,15 +47,15 @@ namespace Semester_3.Sơ_Vít.Ìm_le_mần_sơ_vít
             }
         }
 
-        public dynamic Get(int id) => _databaseContext.Provinces.FirstOrDefault(p => p.Code == id);
+        public dynamic Get(int id) => _databaseContext.PaymentMethods.FirstOrDefault(pm => pm.PaymentId == id);
 
-        public dynamic Read() => _databaseContext.Provinces.ToList();
+        public dynamic Read() => _databaseContext.PaymentMethods.ToList();
 
-        public bool Update(Province entity)
+        public bool Update(PaymentMethod entity)
         {
             try
             {
-                _databaseContext.Provinces.Update(entity);
+                _databaseContext.PaymentMethods.Update(entity);
                 return _databaseContext.SaveChanges() > 0;
             }
             catch (Exception)

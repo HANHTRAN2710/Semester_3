@@ -7,20 +7,20 @@ using System.Linq;
 
 namespace Semester_3.Sơ_Vít.Ìm_le_mần_sơ_vít
 {
-    public class ProvinceCRUD : IServiceCRUD<Province>
+    public class ProductImageCRUD : IServiceCRUD<ProductImage>
     {
         private readonly DatabaseContext _databaseContext;
 
-        public ProvinceCRUD(DatabaseContext databaseContext)
+        public ProductImageCRUD(DatabaseContext databaseContext)
         {
             _databaseContext = databaseContext;
         }
 
-        public bool Create(Province entity)
+        public bool Create(ProductImage entity)
         {
             try
             {
-                _databaseContext.Provinces.Add(entity);
+                _databaseContext.ProductImages.Add(entity);
                 return _databaseContext.SaveChanges() > 0;
             }
             catch (Exception)
@@ -33,10 +33,10 @@ namespace Semester_3.Sơ_Vít.Ìm_le_mần_sơ_vít
         {
             try
             {
-                var provinceEntity = _databaseContext.Provinces.FirstOrDefault(p => p.Code == id);
-                if (provinceEntity != null)
+                var productImageEntity = _databaseContext.ProductImages.FirstOrDefault(pi => pi.ImageId == id);
+                if (productImageEntity != null)
                 {
-                    _databaseContext.Provinces.Remove(provinceEntity);
+                    _databaseContext.ProductImages.Remove(productImageEntity);
                     return _databaseContext.SaveChanges() > 0;
                 }
                 return false;
@@ -47,15 +47,15 @@ namespace Semester_3.Sơ_Vít.Ìm_le_mần_sơ_vít
             }
         }
 
-        public dynamic Get(int id) => _databaseContext.Provinces.FirstOrDefault(p => p.Code == id);
+        public dynamic Get(int id) => _databaseContext.ProductImages.FirstOrDefault(pi => pi.ImageId == id);
 
-        public dynamic Read() => _databaseContext.Provinces.ToList();
+        public dynamic Read() => _databaseContext.ProductImages.ToList();
 
-        public bool Update(Province entity)
+        public bool Update(ProductImage entity)
         {
             try
             {
-                _databaseContext.Provinces.Update(entity);
+                _databaseContext.ProductImages.Update(entity);
                 return _databaseContext.SaveChanges() > 0;
             }
             catch (Exception)

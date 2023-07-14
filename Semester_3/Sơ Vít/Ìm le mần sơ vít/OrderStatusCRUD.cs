@@ -7,20 +7,20 @@ using System.Linq;
 
 namespace Semester_3.Sơ_Vít.Ìm_le_mần_sơ_vít
 {
-    public class ProvinceCRUD : IServiceCRUD<Province>
+    public class OrderStatusCRUD : IServiceCRUD<OrderStatus>
     {
         private readonly DatabaseContext _databaseContext;
 
-        public ProvinceCRUD(DatabaseContext databaseContext)
+        public OrderStatusCRUD(DatabaseContext databaseContext)
         {
             _databaseContext = databaseContext;
         }
 
-        public bool Create(Province entity)
+        public bool Create(OrderStatus entity)
         {
             try
             {
-                _databaseContext.Provinces.Add(entity);
+                _databaseContext.OrderStatuses.Add(entity);
                 return _databaseContext.SaveChanges() > 0;
             }
             catch (Exception)
@@ -33,10 +33,10 @@ namespace Semester_3.Sơ_Vít.Ìm_le_mần_sơ_vít
         {
             try
             {
-                var provinceEntity = _databaseContext.Provinces.FirstOrDefault(p => p.Code == id);
-                if (provinceEntity != null)
+                var orderStatusEntity = _databaseContext.OrderStatuses.FirstOrDefault(os => os.OrderStatusId == id);
+                if (orderStatusEntity != null)
                 {
-                    _databaseContext.Provinces.Remove(provinceEntity);
+                    _databaseContext.OrderStatuses.Remove(orderStatusEntity);
                     return _databaseContext.SaveChanges() > 0;
                 }
                 return false;
@@ -47,15 +47,15 @@ namespace Semester_3.Sơ_Vít.Ìm_le_mần_sơ_vít
             }
         }
 
-        public dynamic Get(int id) => _databaseContext.Provinces.FirstOrDefault(p => p.Code == id);
+        public dynamic Get(int id) => _databaseContext.OrderStatuses.FirstOrDefault(os => os.OrderStatusId == id);
 
-        public dynamic Read() => _databaseContext.Provinces.ToList();
+        public dynamic Read() => _databaseContext.OrderStatuses.ToList();
 
-        public bool Update(Province entity)
+        public bool Update(OrderStatus entity)
         {
             try
             {
-                _databaseContext.Provinces.Update(entity);
+                _databaseContext.OrderStatuses.Update(entity);
                 return _databaseContext.SaveChanges() > 0;
             }
             catch (Exception)
